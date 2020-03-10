@@ -1,0 +1,6 @@
+Program will return word if it is a palindrome and will not if it isn't
+
+const palindrome = str => {
+  str = str.toLowerCase()
+  return str === str.split('').reverse().join('')
+}
