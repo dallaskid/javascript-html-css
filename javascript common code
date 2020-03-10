@@ -5,81 +5,32 @@
 </FORM>
 
 -----------------------------------------------------------------------------------------------------------------------------------
+// 2. SHOW DATE
 
-// 2. STATUS BAR
-
-var timerID = null;
-var timerRunning = false;
-
-function stopclock (){
-if(timerRunning)
-clearTimeout(timerID);
-timerRunning = false;
-}
-
-function showtime () {
+<LANGUAGE="JavaScript">
 var now = new Date();
-var hours = now.getHours();
-var minutes = now.getMinutes();
-var seconds = now.getSeconds()
-var timeValue = "" + ((hours >12) ? hours -12 :hours)
-timeValue += ((minutes < 10) ? ":0" : ":") + minutes
-timeValue += ((seconds < 10) ? ":0" : ":") + seconds
-timeValue += (hours >= 12) ? " P.M." : " A.M."
-window.status = timeValue;
-// you could replace the above with this
-// and have a clock on the status bar:
-// 
-timerID = setTimeout("showtime()",1000);
-timerRunning = true;
-}
 
-function startclock () {
-// Make sure the clock is stopped
-stopclock();
-showtime();
-}
+var days = new Array('domingo','lunes','martes','miércoles','jueves','viernes','sábado');
 
-// -->
-</script>
+var months = new Array('enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre');
 
-//PUT BOLD CODE IN <BODY> TAG
+var date = ((now.getDate()<10) ? "0" : "")+ now.getDate();
 
-<BODY onLoad="startclock()">
+function fourdigits(number)	{
+	return (number < 1000) ? number + 1900 : number;
+								}
+today =  days[now.getDay()] + ", " +
+         months[now.getMonth()] + " " +
+         date + ", " +
+         (fourdigits(now.getYear())) ;
 
-//PUT THIS BELOW <BODY> TAG
-
-<form name="clock" onSubmit="0">
-
------------------------------------------------------------------------------------------------------------------------------------
-
-// 3. REDIRECT TO NEW PAGE
-
-//PUT THE FOLLOWING THIS BETWEEN <HEAD> TAGS
-
-<SCRIPT LANGUAGE="JavaScript">
-<!-- Script courtesy of http://www.web-source.net - Your Guide to Professional Web Site Design and Development
-window.location="http://www.yourdomain.com/";
-// -->
+document.write(today);
 </script>
 
 -----------------------------------------------------------------------------------------------------------------------------------
-// 4. SHOW DATE
-
-<SCRIPT language="JavaScript">
-<!-- Script courtesy of http://www.web-source.net - Your Guide to Professional Web Site Design and Development
-var today_date= new Date()
-var month=today_date.getMonth()+1
-var today=today_date.getDate()
-var year=today_date.getFullYear()
-//document.write("Today's date is: ")
-document.write(month+"/"+today+"/"+year)
-//--> </SCRIPT>
-
------------------------------------------------------------------------------------------------------------------------------------
-// 5. EMAIL PROMPT
+// 3. EMAIL PROMPT
 
 <form>
 <input type="button" value="Email Me" 
-onClick="location.href='mailto:you@yourdomain.com'">
+onClick="location.href='mailto:youremail@youraddress.com'">
 </form>
